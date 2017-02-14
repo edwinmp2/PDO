@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     require_once "database/Connection.php";
     require_once "database/Auth.php";
     require_once "config/database.php";
@@ -18,6 +20,10 @@
             echo $e->getMessage();
         }
     }
+
+    if (isset($_SESSION['user'])) {
+        header("location: index.php");
+    }else{
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,3 +47,5 @@
     <a href="login.php">kembali ke halaman login</a>
 </body>
 </html>
+
+<?php } ?>

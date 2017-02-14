@@ -14,7 +14,7 @@ class Auth{
         $statement->execute();
 
         $data = $statement->fetchAll(PDO::FETCH_CLASS);
-        // var_dump($data[0]->password);exit;
+
     	if (!empty($data[0]->username)) {
     		if (password_verify($_POST['password'], $data[0]->password)) {
     			session_start();
@@ -27,7 +27,6 @@ class Auth{
     			echo "<script> alert('Username atau password salah!');      
 				        window.location.href='login.php';
 				</script>";
-    			// header("location : login.php");
     		}
     	}else{
     		header("location: login.php");
@@ -57,7 +56,6 @@ class Auth{
         $data = $statement->fetchAll(PDO::FETCH_CLASS);
 
         if (!empty($data)) {
-        	// var_dump($data);exit;
         	echo "<script> alert('Username telah terdaftar!');      
 			        window.location.href='register.php';
 			</script>";
@@ -71,8 +69,7 @@ class Auth{
 	        try {
 	            $statement = $this->pdo->prepare($sql);
 	            $statement->execute($parameters);
-
-	            //return true;
+                
 	            header("location: login.php");
 
 	        } catch (\Exception $e) {

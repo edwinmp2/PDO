@@ -1,6 +1,7 @@
 <?php
+    session_start();
+
 	require_once "database/Connection.php";
-    // require_once "database/QueryBuilder.php";
     require_once "config/database.php";
     require_once "database/Auth.php";
 
@@ -16,8 +17,8 @@
     }
 
     if (isset($_SESSION['user'])) {
-    	var_dump($_SESSION['user']);
-    }
+        header("location: index.php");
+    }else{
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,3 +37,5 @@
 	<a href="register.php">Daftar sekarang</a>
 </body>
 </html>
+
+<?php }?>

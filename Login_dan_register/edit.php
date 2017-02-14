@@ -9,7 +9,7 @@
     
     if(isset($_POST['submit'])){
         $id = $_GET['id'];
-        // var_dump($id);exit;
+        
         try {
             $db->update('tbl_article', [
 	            'judul' => $_POST['judul'],
